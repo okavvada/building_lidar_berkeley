@@ -17,8 +17,9 @@ class Building:
 		self.methods = Methods(database=database, User=User, host=host, projection=projection);
 
 		# Reset storage tables
-		self.methods.tableSetUp(transform_to=transform_to);
+		lidar_data = self.methods.tableSetUp(transform_to=transform_to);
 
 
 if __name__ == "__main__":
 	b = Building(transform_to=5070)
+	blds, not_blds = dbscan(b.lidar_data, zboost=1.4)
